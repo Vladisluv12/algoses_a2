@@ -5,6 +5,7 @@
 #include <vector>
 #include <chrono>
 #include <iostream>
+#include <fstream>
 
 class SortTester {
 public:
@@ -25,7 +26,7 @@ public:
         std::vector<TestResult> results;
 
         for (int i = 0; i < 3; i++) {
-            for (int size = 500; size < 10000; size += 100) {
+            for (int size = 500; size < 100000; size += 100) {
                 long long totalTime = 0;
                 const int RUNS = 5;
                 for (int run = 0; run < RUNS; ++run) {
@@ -52,7 +53,7 @@ public:
         std::vector<TestResult> results;
         for (int i = 0; i < 3; i++) {
             for (int threshold : thresholds) {
-                for (int size = 500; size < 10000; size += 100) {
+                for (int size = 500; size < 100000; size += 100) {
                     long long totalTime = 0;
                     const int RUNS = 5;
                     
@@ -77,11 +78,11 @@ public:
     }
 
     void saveResultsToCSV(vector<TestResult>& results, const string& filename) {
-        ofstream file(filename);
+        std::ofstream file(filename);
         file << "Size,TimeMicros,ArrayType,Threshold\n";
         
         for (const auto& result : results) {
-            file << result.size << "," << result.timeMicros << "," << result.arrayType << ","  << "," << result.threshold << "\n";
+            file << result.size << "," << result.timeMicros << "," << result.arrayType << "," << result.threshold << "\n";
         }
         
         file.close();

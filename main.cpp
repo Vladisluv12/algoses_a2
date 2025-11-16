@@ -1,7 +1,7 @@
 #define _USE_MATH_DEFINES
 #include "bits/stdc++.h"
 #include "ArrayGenerator.hpp"
-#include "SortTester.hpp"
+#include "SortTester.cpp"
 #include "merge_sort.hpp"
 using namespace std;
 
